@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Afiliados</title>
+</head>
+<body>
+    <h2>Lista de Afiliados</h2>
+    <ul>
+    {% for afiliado in afiliados %}
+        <li>{{ afiliado.CPF }} - {{ afiliado.Nome }} - {{ afiliado.Status }}</li>
+    {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>

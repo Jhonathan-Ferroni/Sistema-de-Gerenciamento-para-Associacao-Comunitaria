@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Cursos</title>
+</head>
+<body>
+    <h2>Cursos Disponíveis</h2>
+    <ul>
+    {% for curso in cursos %}
+        <li>{{ curso.ID }} - {{ curso.Nome }} - {{ curso.Area }}</li>
+    {% endfor %}
+    </ul>
+    <a href="/">Voltar</a>
+</body>
+</html>
