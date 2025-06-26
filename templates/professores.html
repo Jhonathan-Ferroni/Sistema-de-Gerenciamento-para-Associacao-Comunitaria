@@ -1,0 +1,7 @@
+<h2>Lista de Professores</h2>
+<ul>
+  {% for professor in professores %}
+    <li>{{ professor.CPF }} - {{ professor.Nome }} - {{ professor.Especializacao }}</li>
+  {% endfor %}
+</ul>
+<a href="/">Voltar</a>
