@@ -108,7 +108,7 @@ def novo_professor():
 
         conn.commit()
         conn.close()
-        return redirect('/professores')  # Se essa rota existir, claro
+        return redirect('/professores')
 
     return render_template('novo_professor.html')
 
@@ -121,6 +121,64 @@ def boletos():
         boletos = cursor.fetchall()
         conn.close()
         return render_template('boletos.html', boletos=boletos)
+
+@app.route('/boletos/novo', methods=['GET', 'POST'])
+def novo_boletos():
+    if request.method == 'POST':
+        cod = request.form['COD']
+        afiliado_CPF = request.form['Afiliado_CPF']
+        valor = request.form['Valor']
+        data_vencimento = request.form['Data_vencimento']
+        status = 'Aberto'
+
+        conn = get_connection()
+        cursor = conn.cursor()
+        cursor.execute('''
+                       INSERT INTO Professores (COD, Afiliado_CPF, Valor, Data_vencimento,Data_pagamento, Status)
+                       VALUES (?, ?, ?, ?, NULL, ?)
+                       ''', (cod,afiliado_CPF , valor, data_vencimento, status))
+
+        conn.commit()
+        conn.close()
+        return redirect('/boletos')
+
+    return render_template('novo_boletos.html')
+
+@app.route('/relatorios')
+def relatorio():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT COUNT(*) FROM Afiliados WHERE status = 'Ativo'")
+    afiliados_ativos = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM Afiliados WHERE status = 'Inativo'")
+    afiliados_inativos = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM Cursos")
+    total_cursos = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM Professores")
+    total_professores = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM Boletos WHERE Status = 'Pago'")
+    boletos_pagos = cursor.fetchone()[0]
+
+    cursor.execute("SELECT COUNT(*) FROM Boletos WHERE Status = 'Aberto'")
+    boletos_abertos = cursor.fetchone()[0]
+
+    conn.close()
+
+    return render_template(
+        'relatorios.html',
+        afiliados_ativos=afiliados_ativos,
+        afiliados_inativos=afiliados_inativos,
+        total_cursos=total_cursos,
+        total_professores=total_professores,
+        boletos_pagos=boletos_pagos,
+        boletos_abertos=boletos_abertos
+    )
+
 
 
 

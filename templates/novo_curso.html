@@ -1,15 +1,42 @@
-<h2>Cadastrar Novo Curso</h2>
-<form method="post">
-  Nome: <input type="text" name="nome"><br>
-  Área: <input type="text" name="area"><br>
-  Descrição: <input type="text" name="descricao"><br>
-  Carga Horária: <input type="text" name="carga"><br>
-  Nível:
-  <select name="nivel">
-    <option value="Iniciante">Iniciante</option>
-    <option value="Intermediário">Intermediário</option>
-    <option value="Avançado">Avançado</option>
-  </select><br>
-  <input type="submit" value="Cadastrar">
-</form>
-<a href="/cursos">Voltar</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastrar Curso</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container py-5">
+
+  <h2 class="mb-4">📘 Cadastrar Novo Curso</h2>
+
+  <form method="post">
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" name="nome" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Área</label>
+      <input type="text" class="form-control" name="area" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descrição</label>
+      <input type="text" class="form-control" name="descricao">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Carga Horária</label>
+      <input type="text" class="form-control" name="carga">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nível</label>
+      <select class="form-select" name="nivel">
+        <option value="Iniciante">Iniciante</option>
+        <option value="Intermediário">Intermediário</option>
+        <option value="Avançado">Avançado</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <a href="/cursos" class="btn btn-secondary">Voltar</a>
+  </form>
+
+</body>
+</html>

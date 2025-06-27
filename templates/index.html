@@ -1,20 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
+    <meta charset="UTF-8">
     <title>Projeto Banco 2</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Bem-vindo ao Sistema da Associação</h1>
-    <ul>
-        <li><a href="/cursos">Listar Cursos</a></li>
-        <li><a href="/afiliados">Listar Afiliados</a></li>
-        <li><a href="/professores">Listar Professores</a></li>
-        <li><a href="/boletos">Listar Boletos</a></li>
-        <li><a href="/afiliados/novo">Cadastrar Novo Afiliado</a></li>
-        <li><a href="/cursos/novo">Cadastrar Novo Curso</a></li>
-        <li><a href="/professor/novo"> Cadastrar Novo Professor</a></li>
+<body class="bg-light">
 
-    </ul>
+    <div class="container py-5">
+        <h1 class="text-center mb-5">🎓 Sistema da Associação Comunitária</h1>
+
+        <div class="row">
+            <!-- Listas -->
+            <div class="col-md-6">
+                <h2>📂 Listas</h2>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><a href="/cursos">📘 Listar Cursos</a></li>
+                    <li class="list-group-item"><a href="/afiliados">👥 Listar Afiliados</a></li>
+                    <li class="list-group-item"><a href="/professores">👨‍🏫 Listar Professores</a></li>
+                    <li class="list-group-item"><a href="/boletos">💸 Listar Boletos</a></li>
+                </ul>
+            </div>
+
+            <!-- Cadastros -->
+            <div class="col-md-6">
+                <h2>📝 Cadastros</h2>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><a href="/afiliados/novo">➕ Cadastrar Novo Afiliado</a></li>
+                    <li class="list-group-item"><a href="/cursos/novo">➕ Cadastrar Novo Curso</a></li>
+                    <li class="list-group-item"><a href="/professor/novo">➕ Cadastrar Novo Professor</a></li>
+                    <li class="list-group-item"><a href="/boletos/novo">➕ Cadastrar Novo Boleto</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/relatorios" class="btn btn-outline-primary btn-lg">📈 Ver Relatório</a>
+        </div>
+    </div>
+
 </body>
 </html>
