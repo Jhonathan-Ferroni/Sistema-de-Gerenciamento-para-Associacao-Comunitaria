@@ -59,12 +59,49 @@ def novo_afiliado():
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO Afiliados (CPF, Nome, endereco_id, telefone_id, email_id, data_filiacao, status)
-            VALUES (?, ?, ?, ?, ?, GETDATE(), ?)
+            VALUES (?, ?, NULL, NULL, NULL, GETDATE(), ?)
         ''', (cpf, nome, status))
         conn.commit()
         conn.close()
         return redirect('/afiliados')
     return render_template('novo_afiliado.html')
+
+@app.route('/afiliados/excluir/<int:id>')
+def excluir_afiliado(id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM Afiliados WHERE CPF = ?", (id,))
+    conn.commit()
+    conn.close()
+    return redirect('/afiliados')
+
+
+@app.route('/afiliados/atualizar/<cpf>', methods=['GET','POST'])
+def atualizar_afiliado(cpf):
+    conn = get_connection()
+    cursor = conn.cursor()
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        status = request.form['status']
+        cursor.execute("""
+            UPDATE Afiliados
+            SET nome = ?, email = ?, status = ?
+            WHERE CPF = ?
+        """, (nome, email, status, cpf))
+        conn.commit()
+        conn.close()
+        return redirect('/afiliados')
+
+    elif request.method == 'GET':
+        cursor.execute("SELECT * FROM Afiliados WHERE CPF = ?", (cpf,))
+        afiliado = cursor.fetchone()
+        conn.close()
+        if afiliado:
+            return render_template('editar_afiliado.html', afiliado=afiliado)
+        else:
+            return "Afiliado não encontrado.", 404
+
 
 
 @app.route('/cursos/novo', methods=['GET', 'POST'])

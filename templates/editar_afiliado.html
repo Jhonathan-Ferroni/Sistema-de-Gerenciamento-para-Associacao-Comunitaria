@@ -1,0 +1,9 @@
+<h2>Editar Afiliado</h2>
+<form method="POST" action="/afiliados/atualizar/{{ afiliado.CPF }}">
+  Nome: <input type="text" name="nome" value="{{ afiliado.nome }}"><br>
+  CPF: <input type="text" name="cpf" value="{{ afiliado.cpf }}"><br>
+  Email: <input type="email" name="email" value="{{ afiliado.email }}"><br>
+  Status: <input type="text" name="status" value="{{ afiliado.status }}"><br>
+  <input type="submit" value="Atualizar">
+</form>
+<a href="/afiliados">Cancelar</a>

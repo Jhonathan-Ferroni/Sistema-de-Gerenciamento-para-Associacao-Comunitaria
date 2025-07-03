@@ -23,6 +23,10 @@
           <td>{{ afiliado.CPF }}</td>
           <td>{{ afiliado.Nome }}</td>
           <td>{{ afiliado.Status }}</td>
+          <td>
+            <a href="/afiliados/atualizar/{{ afiliado.CPF }}">Editar</a> |
+            <a href="/afiliados/excluir/{{ afiliado.CPF }}" onclick="return confirm('Tem certeza?')">Excluir</a>
+          </td>
         </tr>
       {% endfor %}
     </tbody>
